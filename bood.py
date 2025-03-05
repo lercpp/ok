@@ -19,9 +19,13 @@ while stop != True:
         books.write(pon)
 
     elif a == "info":
-        for i in book:
-            k=i.replace("\n" , "")
-            print(k)
+        oke=book.readlines()
+        if len(oke)==0:
+            print("Здесь пусто")
+        else:
+            for i in book:
+                k=i.replace("\n" , "")
+                print(k)
 
     elif a == "delete":
         n=input("Введи название книги для того, что бы я мог ее удалить:")
