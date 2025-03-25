@@ -1,10 +1,12 @@
+from fileinput import close
+
 stop= False
 
 print("Здравствуй,что хочешь ввести?")
 while stop != True:
 
     book = open("kniga_brat.txt", 'r')
-    books = open("kniga_brat.txt", 'a')
+    books = open("kniga_brat.txt", 'w')
 
     a = input("<")
 
@@ -28,31 +30,54 @@ while stop != True:
                 print(k)
 
     elif a == "delete":
-        n=input("Введи название книги для того, что бы я мог ее удалить:")
-        oke = book.readlines()
-        for i in oke:
-            s=i.split("\n")
-            for i in range(len(s)):
-                    if s[i] == n:
-                        books.remove(oke[i])
+        title_to_delete = input("Введите книгу для того, чтобы я смог ее удалить: ")
+        book = open("kniga_brat.txt", 'r')
+        lines = book.readlines()
+        new_lines = []
+        found = False
+        for line in lines:
+            if title_to_delete in line:
+                found = True
+            else:
+                new_lines.append(line)
+        book.close()
+
+        if found:
+            books = open("kniga_brat.txt", 'w')
+            for line in new_lines:
+                books.write(line)
+            books.close()
+            print("Выбранная книга удалена")
         else:
-            print("Такой книги не существует:(")
+            print("Книга не найдена")
 
     elif a == "change":
+        a=[]
         m=input("Введи название книги которую хочешь изменить:")
+        book = open("kniga_brat.txt", 'r')
         oke = book.readlines()
-        for i in range(len(oke)):
-            if oke[i] == m:
-                oke.remove(oke[i])
-                title = input("Введите название книги:")
-                author = input("Введите автора  книги:")
-                creation = input("Введите год создания книги:")
-                genre = input("Введите жанр:")
-                quanity = input("Введите кол-во книг:")
-                pon = title + " " + author + " " + creation + " " + genre + " " + quanity + "\n"
-                books.write(pon)
+        for i in book:
+            if oke in i:
+                id = True
+            else:
+                new_oke.append(i)
+        book.close()
+
+        if id==True:
+            title = input("Введите название книги:")
+            author = input("Введите автора  книги:")
+            creation = input("Введите год создания книги:")
+            genre = input("Введите жанр:")
+            quanity = input("Введите кол-во книг:")
+            pon = title + " " + author + " " + creation + " " + genre + " " + quanity + "\n"
+            books = open("kniga_brat.txt", 'w')
+            a.append(pon)
+            for i in a:
+                books.write(i)
+            books.close()
         else:
-             print("Такой книги не существует:")
+            print("Такой книги не существует:")
+
     elif a == "menu":
         print("Возможные функции:")
         bo="<edit\n<info\n<delete\n<change\n<menu\n<stop"
@@ -64,6 +89,3 @@ while stop != True:
 
     else:
         print("Не корректный ввод попробуйте снова:")
-
-
-#он не хочет комититься поэтому тут будет велика фраза:да
