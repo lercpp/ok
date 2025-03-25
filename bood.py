@@ -52,17 +52,18 @@ while stop != True:
                 pon = title + " " + author + " " + creation + " " + genre + " " + quanity + "\n"
                 books.write(pon)
         else:
-             print("Такой книги не существует:(")
-
+             print("Такой книги не существует:")
     elif a == "menu":
         print("Возможные функции:")
-        bo="<edit,<info,<delete,<change,<menu,<stop"
-        bo=bo.replace("," , "\n")
+        bo="<edit\n<info\n<delete\n<change\n<menu\n<stop"
         print(bo)
 
     elif a == "stop":
         stop=True
-        print("Конец программы:(")
+        print("Конец программы:")
 
     else:
-        print("Не корректный ввод:(,попробуйте снова")
+        print("Не корректный ввод попробуйте снова:")
+
+
+#он не хочет комититься поэтому тут будет велика фраза:да
