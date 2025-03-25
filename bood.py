@@ -60,7 +60,7 @@ while stop != True:
             if oke in i:
                 id = True
             else:
-                new_oke.append(i)
+                a.append(i)
         book.close()
 
         if id==True:
